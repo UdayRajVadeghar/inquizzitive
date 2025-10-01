@@ -74,62 +74,8 @@
     animation-delay: 4s;
   }
 
-  /* Floating Navigation */
-  .floating-nav {
-    @apply fixed top-5 left-1/2 -translate-x-1/2 flex justify-between items-center;
-    @apply min-w-[500px] z-[1000];
-    @apply px-6 py-3 rounded-[60px];
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  }
-
-  .dark .floating-nav {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  }
-
-  .nav-brand {
-    @apply flex items-center gap-3;
-  }
-
-  .nav-logo {
-    @apply text-2xl;
-  }
-
-  .nav-title {
-    @apply font-bold text-xl text-white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-links {
-    @apply flex gap-4;
-  }
-
-  .nav-btn {
-    @apply bg-transparent border-none text-white px-4 py-2 rounded-[30px];
-    @apply font-medium cursor-pointer transition-all duration-300 text-sm;
-  }
-
-  .nav-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    @apply -translate-y-px;
-  }
-
-  .nav-btn-primary {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-  }
-
-  .nav-btn-primary:hover {
-    background: rgba(255, 255, 255, 0.3);
-  }
-
-  /* Main Container */
   .main-container {
-    @apply relative z-[1] max-w-[1000px] mx-auto;
+    @apply relative z-[1] max-w-[1400px] mx-auto;
     padding: 100px 20px 40px;
   }
 
@@ -164,7 +110,7 @@
   }
 
   .welcome-card {
-    @apply p-12 text-center max-w-[700px] w-full;
+    @apply p-12 text-center max-w-[1100px] w-full;
   }
 
   .welcome-title {
@@ -186,7 +132,7 @@
 
   /* Quiz Setup */
   .quiz-setup {
-    @apply flex flex-col gap-6 max-w-[500px] mx-auto;
+    @apply flex flex-col gap-6 max-w-[700px] mx-auto;
   }
 
   .setup-row {
@@ -594,21 +540,8 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .floating-nav {
-    @apply min-w-0 px-5 py-2.5;
-    width: calc(100% - 40px);
-  }
-
-  .nav-title {
-    @apply text-lg;
-  }
-
-  .nav-btn {
-    @apply px-3 py-1.5 text-xs;
-  }
-
   .main-container {
-    padding: 90px 16px 24px;
+    padding: 110px 16px 24px;
   }
 
   .welcome-card {

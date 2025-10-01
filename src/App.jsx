@@ -20,24 +20,6 @@ export default function App() {
   const [numQuestions, setNumQuestions] = useState(10);
   const [showStartScreen, setShowStartScreen] = useState(true);
 
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const savedMode = localStorage.getItem("darkMode");
-    return savedMode ? JSON.parse(savedMode) : false;
-  });
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-    localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
-  }, [isDarkMode]);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
   // Fetch Quiz
   async function fetchQuiz() {
     setLoading(true);
@@ -46,8 +28,6 @@ export default function App() {
     setShowStartScreen(false);
 
     try {
-      // Replace this with your actual Gemini API call
-
       const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
       const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
       const prompt = `
@@ -143,50 +123,7 @@ export default function App() {
   const score = submitted ? calculateScore() : null;
 
   return (
-    <div className="app">
-      {/* Floating Navbar */}
-      <nav className="floating-nav">
-        <div className="nav-brand">
-          <span className="nav-logo">🧠</span>
-          <span className="nav-title">Inquizzitive</span>
-        </div>
-        <div className="nav-links">
-          <button className="nav-btn" onClick={resetQuiz}>
-            Practice
-          </button>
-          <button className="nav-btn">Dashboard</button>
-          <button className="nav-btn nav-btn-primary">Sign In</button>
-
-          <button
-            onClick={toggleDarkMode}
-            className="ml-2 p-2 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300 border border-white/20 hover:border-white/30"
-            aria-label="Toggle dark mode"
-          >
-            {isDarkMode ? (
-              <svg
-                className="w-5 h-5 text-yellow-300"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            ) : (
-              <svg
-                className="w-5 h-5 text-gray-300"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-              </svg>
-            )}
-          </button>
-        </div>
-      </nav>
-
+    <div className="app mt-16 b">
       {/* Background Elements */}
       <div className="bg-shapes">
         <div className="shape shape-1"></div>
@@ -194,7 +131,7 @@ export default function App() {
         <div className="shape shape-3"></div>
       </div>
 
-      <div className="main-container">
+      <div className="main-container pt-20 md:pt-24">
         {/* Welcome Screen */}
         {showStartScreen && (
           <div className="welcome-section">
